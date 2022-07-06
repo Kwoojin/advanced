@@ -1,4 +1,4 @@
-package hello.advanced.app.v2;
+package hello.advanced.app.advanced.v2;
 
 import hello.advanced.trace.TraceStatus;
 import hello.advanced.trace.helloTrace.HelloTraceV2;

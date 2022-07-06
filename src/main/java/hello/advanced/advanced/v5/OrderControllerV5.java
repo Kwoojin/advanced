@@ -1,4 +1,4 @@
-package hello.advanced.app.advanced.v5;
+package hello.advanced.advanced.v5;
 
 import hello.advanced.trace.callback.TraceTemplate;
 import hello.advanced.trace.logtrace.LogTrace;

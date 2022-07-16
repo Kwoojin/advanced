@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping //Spring 은 @Controller 또는 @RequestMapping 이 있어야 Spring Controller 로 인식
+@RequestMapping
 @ResponseBody
 public interface OrderControllerV1 {
 

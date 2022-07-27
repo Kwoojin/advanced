@@ -1,9 +1,12 @@
 package hello.advanced.config.v6_aop.aspect;
 
+import hello.advanced.trace.TraceStatus;
 import hello.advanced.trace.logtrace.LogTrace;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 
+@Aspect
 public class LogTraceAspect {
 
     private final LogTrace logTrace;
@@ -12,8 +15,21 @@ public class LogTraceAspect {
         this.logTrace = logTrace;
     }
 
-    @Around("execution(* hello.proxy.app..*(..))")
+    @Around("execution(* hello.advanced.app..*(..))")
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
-        return null;
+        TraceStatus status = null;
+        try {
+            String message = joinPoint.getSignature().toShortString();
+            status = logTrace.begin(message);
+
+//            Object result = invocation.proceed();
+            Object result = joinPoint.proceed();
+
+            logTrace.end(status);
+            return result;
+        } catch (Exception e) {
+            logTrace.exception(status, e);
+            throw e;
+        }
     }
 }
